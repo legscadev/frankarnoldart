@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { ImageSlider } from "@/components/shared/ImageSlider";
 import { siteImages } from "@/lib/site-images";
 import { siteConfig } from "@/lib/site";
 
@@ -19,16 +19,14 @@ export default function GalleryContactPage() {
         subtitle="Explore the gallery and working studio of international abstract painter and sculptor Frank Arnold"
       />
 
-      {/* Hero gallery image */}
+      {/* Hero gallery slider */}
       <section className="pb-14 bg-canvas">
         <Container size="wide">
-          <div className="relative w-full max-w-4xl mx-auto aspect-video overflow-hidden bg-canvas-soft">
-            <Image
-              src={siteImages.studios.cabo[0]}
-              alt="Frank Arnold Gallery exterior"
-              fill
-              sizes="(min-width: 1024px) 62rem, 100vw"
-              className="object-cover"
+          <div className="mx-auto max-w-4xl">
+            <ImageSlider
+              images={siteImages.studios.cabo}
+              alt="Frank Arnold Gallery"
+              aspect="video"
             />
           </div>
         </Container>
@@ -135,13 +133,11 @@ export default function GalleryContactPage() {
           <p className="mt-3 text-center text-xs uppercase tracking-[0.16em] text-muted mb-10">
             Mexico City, Mexico
           </p>
-          <div className="relative w-full max-w-4xl mx-auto aspect-video overflow-hidden bg-canvas-soft">
-            <Image
-              src={siteImages.studios.mexico[0]}
+          <div className="mx-auto max-w-4xl">
+            <ImageSlider
+              images={siteImages.studios.mexico}
               alt="Mexico City sculpture studio"
-              fill
-              sizes="(min-width: 1024px) 62rem, 100vw"
-              className="object-cover"
+              aspect="video"
             />
           </div>
         </Container>
