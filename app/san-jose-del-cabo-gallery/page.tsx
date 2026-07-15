@@ -16,15 +16,16 @@ export default function GalleryContactPage() {
     <>
       <PageHeader
         title="San Jose del Cabo Gallery Studio"
-        subtitle="Explore the gallery and working studio of international abstract painter and sculptor Frank Arnold."
+        subtitle="Explore the gallery and working studio of international abstract painter and sculptor Frank Arnold"
       />
 
-      <section className="pb-16 bg-canvas">
+      {/* Hero gallery image */}
+      <section className="pb-14 bg-canvas">
         <Container size="wide">
           <div className="relative w-full max-w-4xl mx-auto aspect-video overflow-hidden bg-canvas-soft">
             <Image
               src={siteImages.studios.cabo[0]}
-              alt="Frank Arnold Gallery interior"
+              alt="Frank Arnold Gallery exterior"
               fill
               sizes="(min-width: 1024px) 62rem, 100vw"
               className="object-cover"
@@ -33,30 +34,41 @@ export default function GalleryContactPage() {
         </Container>
       </section>
 
+      {/* Gallery info block */}
       <section className="pb-16 bg-canvas">
         <Container size="narrow">
           <h2 className="gold-title text-3xl md:text-4xl text-center">
             Frank Arnold Gallery
           </h2>
           <p className="mt-3 text-center text-xs uppercase tracking-[0.16em] text-muted">
-            San José del Cabo, BCS, Mexico
+            San Jose del Cabo, BCS, Mexico
           </p>
 
           <div className="mt-10 grid gap-10 md:grid-cols-2 text-sm md:text-[0.95rem]">
+            {/* Hours (left / centered on mobile) */}
             <div className="text-center md:text-right">
               <p className="font-semibold text-ink uppercase tracking-[0.14em] text-xs">
                 Tuesday – Sunday
               </p>
               <p className="mt-1 text-ink-soft">2:00 pm – 7:00 pm</p>
-              <p className="mt-6 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
+              <p className="mt-2 text-ink-soft italic text-xs">
+                Closed on Mondays
+              </p>
+
+              <p className="mt-8 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
                 Art Walk Thursday
               </p>
               <p className="mt-1 text-ink-soft">5:00 pm – 9:00 pm</p>
-              <p className="mt-6 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
-                Closed on Mondays
+              <p className="mt-2 text-ink-soft italic text-xs">
+                Every Thursday
+              </p>
+
+              <p className="mt-10 text-xs text-muted italic max-w-xs md:ml-auto">
+                Ring Bell for Entrance or Contact Frank Arnold
               </p>
             </div>
 
+            {/* Contact (right / centered on mobile) */}
             <div className="text-center md:text-left">
               <p className="font-semibold text-ink uppercase tracking-[0.14em] text-xs">
                 Gallery Address
@@ -66,17 +78,22 @@ export default function GalleryContactPage() {
                 <br />
                 {siteConfig.address.locality}
               </p>
-              <p className="mt-6 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
+
+              <p className="mt-8 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
                 Gallery Phone
               </p>
               <p className="mt-1 text-ink-soft">{siteConfig.phones.gallery}</p>
-              <p className="mt-6 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
+
+              <p className="mt-8 font-semibold text-ink uppercase tracking-[0.14em] text-xs">
                 Frank Arnold
               </p>
               <p className="mt-1 text-ink-soft">
                 USA {siteConfig.phones.usa}
                 <br />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-accent">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="hover:text-accent transition-colors"
+                >
                   {siteConfig.email}
                 </a>
               </p>
@@ -85,29 +102,32 @@ export default function GalleryContactPage() {
         </Container>
       </section>
 
-      <div className="border-t border-stone my-6" />
+      <div className="border-t border-stone mx-auto max-w-4xl" />
 
-      <section className="pt-4 pb-16 bg-canvas">
+      {/* Gallery District block — dark heading, not gold */}
+      <section className="pt-12 pb-16 bg-canvas">
         <Container size="narrow" className="text-center">
-          <div className="mx-auto w-16 h-16 rounded-full border-2 border-accent flex items-center justify-center text-accent text-xs font-semibold tracking-[0.16em]">
+          <div className="mx-auto w-16 h-16 rounded-full border-2 border-accent flex items-center justify-center text-accent text-[0.65rem] font-semibold tracking-[0.16em]">
             FA
           </div>
-          <h2 className="gold-title text-2xl md:text-3xl mt-8">
+          <h2 className="mt-8 font-display text-2xl md:text-3xl text-ink">
             San Jose del Cabo Gallery District
           </h2>
           <p className="mt-6 text-sm md:text-[0.95rem] leading-[1.9] text-ink-soft max-w-2xl mx-auto">
-            The historic Gallery District of San José del Cabo is the leading
-            art destination of its kind in Mexico. The Cape Verde area — a
-            revitalized 300-year-old mission town — hosts working galleries
-            around the plaza. The Frank Arnold Gallery, which anchors this
-            evolving community, has been rated the number one Cabo attraction
-            by TripAdvisor and described as arguably the best gallery space in
-            town.
+            The historic Gallery District of San Jose del Cabo is the leading
+            art destination of its kind in Mexico — a revitalized 300-year-old
+            mission town where galleries line the plaza. The Frank Arnold
+            Gallery, which anchors the community, has been rated the number
+            one Cabo attraction by TripAdvisor and described as arguably the
+            best gallery space in town.
           </p>
         </Container>
       </section>
 
-      <section className="pt-6 pb-20 bg-canvas">
+      <div className="border-t border-stone mx-auto max-w-4xl" />
+
+      {/* Mexico City Sculpture Studio */}
+      <section className="pt-14 pb-24 bg-canvas">
         <Container size="wide">
           <h2 className="gold-title text-3xl md:text-4xl text-center">
             Mexico City Sculpture Studio
@@ -115,42 +135,14 @@ export default function GalleryContactPage() {
           <p className="mt-3 text-center text-xs uppercase tracking-[0.16em] text-muted mb-10">
             Mexico City, Mexico
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            {siteImages.studios.mexico.slice(0, 2).map((src) => (
-              <div key={src} className="relative aspect-square overflow-hidden bg-canvas-soft">
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 40vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="pt-6 pb-24 bg-canvas">
-        <Container size="wide">
-          <h2 className="gold-title text-3xl md:text-4xl text-center">
-            California Studio
-          </h2>
-          <p className="mt-3 text-center text-xs uppercase tracking-[0.16em] text-muted mb-10">
-            Central California, USA
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            {siteImages.studios.california.slice(0, 2).map((src) => (
-              <div key={src} className="relative aspect-square overflow-hidden bg-canvas-soft">
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 40vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            ))}
+          <div className="relative w-full max-w-4xl mx-auto aspect-video overflow-hidden bg-canvas-soft">
+            <Image
+              src={siteImages.studios.mexico[0]}
+              alt="Mexico City sculpture studio"
+              fill
+              sizes="(min-width: 1024px) 62rem, 100vw"
+              className="object-cover"
+            />
           </div>
         </Container>
       </section>
