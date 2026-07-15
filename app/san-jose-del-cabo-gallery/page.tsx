@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ImageSlider } from "@/components/shared/ImageSlider";
@@ -105,8 +106,14 @@ export default function GalleryContactPage() {
       {/* Gallery District block — dark heading, not gold */}
       <section className="pt-12 pb-16 bg-canvas">
         <Container size="narrow" className="text-center">
-          <div className="mx-auto w-16 h-16 rounded-full border-2 border-accent flex items-center justify-center text-accent text-[0.65rem] font-semibold tracking-[0.16em]">
-            FA
+          <div className="mx-auto relative w-24 h-24 md:w-28 md:h-28">
+            <Image
+              src={siteImages.emblems.galleryDistrictSeal}
+              alt="Official member — Gallery District, San José del Cabo"
+              fill
+              sizes="7rem"
+              className="object-contain"
+            />
           </div>
           <h2 className="mt-8 font-display text-2xl md:text-3xl text-ink">
             San Jose del Cabo Gallery District

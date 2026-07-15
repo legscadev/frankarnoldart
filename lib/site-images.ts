@@ -21,6 +21,9 @@ export const siteImages = {
     artwork7: `${BASE}/2021/03/frank-arnold-artwork7.jpg`,
     galleryCabo1: `${BASE}/2021/03/frank-arnold-art-gallery-cabo1.jpg`,
   },
+  emblems: {
+    galleryDistrictSeal: `${BASE}/2021/03/gallery-district-san-jose-del-cabo-seal.png`,
+  },
   studios: {
     cabo: [
       `${BASE}/2021/03/frank-arnold-art-gallery-cabo-slide1.jpg`,
