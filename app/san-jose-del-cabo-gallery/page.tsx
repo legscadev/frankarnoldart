@@ -106,12 +106,12 @@ export default function GalleryContactPage() {
       {/* Gallery District block — dark heading, not gold */}
       <section className="pt-12 pb-16 bg-canvas">
         <Container size="narrow" className="text-center">
-          <div className="mx-auto relative w-24 h-24 md:w-28 md:h-28">
+          <div className="mx-auto relative w-44 h-44 md:w-56 md:h-56">
             <Image
               src={siteImages.emblems.galleryDistrictSeal}
               alt="Official member — Gallery District, San José del Cabo"
               fill
-              sizes="7rem"
+              sizes="14rem"
               className="object-contain"
             />
           </div>
