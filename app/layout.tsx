@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Oswald, Raleway } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
-const display = Cormorant_Garamond({
+const display = Oswald({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
-const sans = Inter({
+const sans = Raleway({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://frankarnoldart.local"),
   title: {
-    default: "Frank Arnold — International Abstract Figurative Painter & Sculptor",
-    template: "%s · Frank Arnold Art",
+    default: "Frank Arnold Art | Artist in Cabo",
+    template: "%s | Frank Arnold Art",
   },
   description:
-    "Frank Arnold is an international abstract figurative painter and sculptor. Explore original paintings, sculptures, books, and the San José del Cabo gallery.",
+    "Frank Arnold — international abstract figurative painter and sculptor. Original paintings, sculptures, books, and the San José del Cabo gallery.",
   openGraph: {
     title: "Frank Arnold Art",
     description:
@@ -43,7 +43,7 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-canvas text-ink">
+      <body className="min-h-full flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

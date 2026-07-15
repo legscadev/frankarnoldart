@@ -10,7 +10,6 @@ import { cn } from "@/lib/cn";
 
 export function Header() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
@@ -20,13 +19,6 @@ export function Header() {
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -34,29 +26,17 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-canvas/85 backdrop-blur-md border-b border-stone/60"
-          : "bg-canvas/0 border-b border-transparent"
-      )}
-    >
-      <Container size="wide" className="flex items-center justify-between h-20 lg:h-24">
+    <header className="sticky top-0 z-50 bg-canvas border-b border-stone">
+      <Container size="wide" className="flex items-center justify-between h-20">
         <Link
           href="/"
-          className="group flex flex-col leading-none"
+          className="font-display text-2xl md:text-[1.6rem] text-accent tracking-wide"
           aria-label="Frank Arnold Art — Home"
         >
-          <span className="font-display text-2xl md:text-3xl tracking-[0.02em] text-ink group-hover:text-accent transition-colors duration-300">
-            Frank Arnold
-          </span>
-          <span className="mt-1 text-[0.6rem] uppercase tracking-[0.34em] text-muted">
-            Paintings · Sculpture
-          </span>
+          Frank Arnold Art
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-1">
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
           {primaryNav.map((item) => {
             const hasChildren = "children" in item && item.children;
             const active =
@@ -72,18 +52,14 @@ export function Header() {
                 >
                   <button
                     className={cn(
-                      "flex items-center gap-1 px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.24em] transition-colors",
+                      "flex items-center gap-1 py-2 text-sm font-medium transition-colors",
                       active ? "text-accent" : "text-ink hover:text-accent"
                     )}
                     aria-expanded={openDropdown === item.href}
                     aria-haspopup="menu"
                   >
                     {item.label}
-                    <svg
-                      viewBox="0 0 10 6"
-                      className="h-1.5 w-2.5 fill-current"
-                      aria-hidden
-                    >
+                    <svg viewBox="0 0 10 6" className="h-1.5 w-2.5 fill-current" aria-hidden>
                       <path d="M0 0h10L5 6z" />
                     </svg>
                   </button>
@@ -91,20 +67,20 @@ export function Header() {
                     {openDropdown === item.href ? (
                       <motion.div
                         role="menu"
-                        initial={{ opacity: 0, y: -6 }}
+                        initial={{ opacity: 0, y: -4 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.18 }}
-                        className="absolute left-1/2 top-full -translate-x-1/2 pt-3 min-w-[15rem]"
+                        exit={{ opacity: 0, y: -4 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-1/2 top-full -translate-x-1/2 pt-2 min-w-[13rem]"
                       >
-                        <div className="bg-canvas border border-stone shadow-frame py-3">
+                        <div className="bg-canvas border border-stone shadow-frame py-2">
                           {item.children!.map((child) => (
                             <Link
                               key={child.href}
                               href={child.href}
                               onClick={closeMenus}
                               className={cn(
-                                "block px-5 py-2 text-sm text-ink-soft hover:bg-canvas-soft hover:text-accent transition-colors",
+                                "block px-5 py-2 text-sm text-ink hover:text-accent transition-colors",
                                 pathname === child.href && "text-accent"
                               )}
                             >
@@ -125,17 +101,11 @@ export function Header() {
                 href={item.href}
                 onClick={closeMenus}
                 className={cn(
-                  "relative px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.24em] transition-colors",
+                  "py-2 text-sm font-medium transition-colors",
                   active ? "text-accent" : "text-ink hover:text-accent"
                 )}
               >
                 {item.label}
-                {active ? (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute left-4 right-4 -bottom-0.5 h-px bg-accent"
-                  />
-                ) : null}
               </Link>
             );
           })}
@@ -168,41 +138,36 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden fixed inset-x-0 top-20 bottom-0 bg-canvas z-40 overflow-y-auto"
+            transition={{ duration: 0.25 }}
+            className="lg:hidden fixed inset-x-0 top-20 bottom-0 bg-canvas z-40 overflow-y-auto border-t border-stone"
           >
-            <Container className="py-10 flex flex-col gap-2">
-              {primaryNav.map((item, i) => {
+            <Container className="py-8 flex flex-col">
+              {primaryNav.map((item) => {
                 const hasChildren = "children" in item && item.children;
                 return (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.08 + i * 0.06, duration: 0.5 }}
-                  >
+                  <div key={item.href}>
                     <Link
                       href={item.href}
                       onClick={closeMenus}
-                      className="block py-3 font-display text-3xl text-ink border-b border-stone hover:text-accent transition-colors"
+                      className="block py-4 text-lg font-medium text-ink border-b border-stone hover:text-accent transition-colors"
                     >
                       {item.label}
                     </Link>
                     {hasChildren ? (
-                      <div className="pl-4 py-2 flex flex-col gap-1">
+                      <div className="pl-4 pb-2 flex flex-col">
                         {item.children!.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
                             onClick={closeMenus}
-                            className="py-1 text-sm text-muted uppercase tracking-[0.2em] hover:text-accent"
+                            className="py-2 text-sm text-muted hover:text-accent"
                           >
                             {child.label}
                           </Link>
                         ))}
                       </div>
                     ) : null}
-                  </motion.div>
+                  </div>
                 );
               })}
             </Container>

@@ -19,11 +19,11 @@ export function GalleryGrid() {
   );
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-10">
       <div
         role="tablist"
         aria-label="Filter artworks by category"
-        className="flex flex-wrap gap-2 border-b border-stone pb-6"
+        className="flex flex-wrap justify-center gap-4"
       >
         {categories.map((c) => (
           <button
@@ -32,22 +32,18 @@ export function GalleryGrid() {
             aria-selected={active === c.value}
             onClick={() => setActive(c.value)}
             className={cn(
-              "relative px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.24em] transition-colors",
-              active === c.value ? "text-accent" : "text-muted hover:text-ink"
+              "px-5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] border transition-colors",
+              active === c.value
+                ? "bg-accent text-white border-accent"
+                : "bg-transparent text-ink border-stone hover:border-accent hover:text-accent"
             )}
           >
             {c.label}
-            <span
-              className={cn(
-                "absolute left-3 right-3 -bottom-[calc(1.5rem+1px)] h-px transition-colors",
-                active === c.value ? "bg-accent" : "bg-transparent"
-              )}
-            />
           </button>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14 sm:gap-x-8 sm:gap-y-16">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
         {filtered.map((a) => (
           <ArtworkCard key={a.slug} artwork={a} />
         ))}
