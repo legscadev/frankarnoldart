@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { ArtgalleriaFrame } from "@/components/gallery/ArtgalleriaFrame";
 import { siteImages } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -19,9 +19,9 @@ export default function GalleryPage() {
         title="Paintings & Sculptures"
         subtitle="Explore the profound connection between form and emotion through Frank Arnold's unique paintings and sculptures. Each piece tells a story, blending contemporary aesthetics with timeless expression."
       />
-      <section className="py-14 md:py-20 bg-canvas">
+      <section className="py-10 md:py-14 bg-canvas">
         <Container size="wide">
-          <GalleryGrid />
+          <ArtgalleriaFrame />
         </Container>
       </section>
     </>

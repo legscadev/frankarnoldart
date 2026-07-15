@@ -17,6 +17,9 @@ export const siteConfig = {
     { label: "Art Walk Thursdays", value: "5:00 pm – 9:00 pm" },
     { label: "Mondays", value: "Closed" },
   ],
+  // Frank's public portfolio on artgalleria.com — public catalog + inquiry
+  // flow are served from here, embedded as an iframe on /painting-sculpture.
+  artgalleriaFolioId: "72d5151c-5892-4650-992f-8f3ce17f9180",
 } as const;
 
 export const primaryNav = [
